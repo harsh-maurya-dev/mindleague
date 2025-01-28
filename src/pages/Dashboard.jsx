@@ -10,17 +10,12 @@ import { Link } from 'react-router-dom';
 import Loader from "../components/Loader"
 
 const Dashboard = () => {
-    const { dashboardData, error, status } = useSelector((state) => state.dashboardData || {})
+    // const { dashboardData, error, status } = useSelector((state) => state.dashboardData || {})
+    // const dispatch = useDispatch()
+
     const [stats, setStats] = useState([])
     const [isOpen, setIsOpen] = useState(false);
     const [tableData, setTableData] = useState([])
-    const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 5;
-    const totalItems = 100; // Example total items count
-
-    const handlePageChange = (pageNumber) => {
-        setCurrentPage(pageNumber);
-    };
 
     const closeModal = () => {
         setIsOpen(false);
@@ -29,8 +24,6 @@ const Dashboard = () => {
     const openModal = () => {
         setIsOpen(true);
     };
-    
-    const dispatch = useDispatch()
 
     const handleToggle = (index, currentStatus) => {
         setTableData((prevData) => {
@@ -86,6 +79,8 @@ const Dashboard = () => {
         // if (status === 'idle') {
         // dispatch(getDashboardData());
         // }
+        localStorage.setItem("x-auth-token-user", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDY3LCJpYXQiOjE3MzgwNDEyNTUsImV4cCI6MTczODY0NjA1NX0.XKG5JTUMW-W4j8BcD4s6q-16F7aQyc_gKDkaVBK9Ii0")
+        localStorage.setItem("x-auth-user-type", "admin")
         fetchStats()
         fetchData()
     }, []);
@@ -119,9 +114,6 @@ const Dashboard = () => {
                             <input type='text' placeholder='Search' className='bg-gray-100 focus:outline-none ' />
                             <IoSearch className='text-2xl' />
                         </div>
-                        {/* <div className='w-10 h-10 flex justify-center items-center bg-[#007acc] text-white rounded-lg'>
-                            <FaFilter />
-                        </div> */}
                         <DashboardFilter
                             isOpen={isOpen}
                             setIsOpen={setIsOpen}

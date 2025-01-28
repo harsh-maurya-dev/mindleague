@@ -13,13 +13,13 @@
   }
 } */
 
-html {
+/* html {
   scrollbar-width: normal;
   scrollbar-color: #777 #555;
 }
 
 html::-webkit-scrollbar {
-  width: 4vw;
+  width: 1vw;
 }
 
 html::-webkit-scrollbar-thumb {
@@ -36,7 +36,7 @@ html::-webkit-scrollbar-track {
 
 html::-webkit-scrollbar-track:hover {
   background-color: #555;
-}
+} */
 
 /* globals.css */
 /* ::-webkit-scrollbar {
@@ -57,7 +57,7 @@ html::-webkit-scrollbar-track:hover {
 
   /* Custom loader */ 
 svg.loader {
-  width: 3.25em;
+  width: 1.25em;
   transform-origin: center;
   animation: rotate4 2s linear infinite;
  }

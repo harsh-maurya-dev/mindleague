@@ -4,7 +4,7 @@ import { MdClose } from "react-icons/md";
 
 
 
-const FilterPopup = ({ isOpen, closeModal, openModal }) => {
+const DashboardFilter = ({ isOpen, closeModal, openModal }) => {
   const [year, setYear] = useState('2001');
   const [month, setMonth] = useState('Jan');
   const [subscription, setSubscription] = useState('Select');
@@ -41,7 +41,7 @@ const FilterPopup = ({ isOpen, closeModal, openModal }) => {
   return (
     <>
       {/* Open filter Button */}
-      <div className='w-10 h-10 flex justify-center items-center bg-[#007acc] text-white rounded-lg'
+      <div className='w-10 h-10 flex justify-center items-center bg-[#007acc] text-white rounded-lg cursor-pointer'
         onClick={openModal}>
         <FaFilter />
       </div>
@@ -63,7 +63,7 @@ const FilterPopup = ({ isOpen, closeModal, openModal }) => {
                 <div className='grid grid-cols-4 gap-4'>
                   {/* year */}
                   <div>
-                    <label htmlFor="year" className="block font-medium text-gray-700">
+                    <label htmlFor="year" className="block font-medium text-gray-700 mb-2">
                       Year
                     </label>
                     <select
@@ -77,7 +77,7 @@ const FilterPopup = ({ isOpen, closeModal, openModal }) => {
                   </div>
                   {/* month */}
                   <div>
-                    <label htmlFor="month" className="block font-medium text-gray-700">
+                    <label htmlFor="month" className="block font-medium text-gray-700 mb-2">
                       Month
                     </label>
                     <select
@@ -91,7 +91,7 @@ const FilterPopup = ({ isOpen, closeModal, openModal }) => {
                   </div>
                   {/* Subscription */}
                   <div>
-                    <label htmlFor="subscription" className="block font-medium text-gray-700">
+                    <label htmlFor="subscription" className="block font-medium text-gray-700 mb-2">
                       Subscription
                     </label>
                     <select
@@ -105,7 +105,7 @@ const FilterPopup = ({ isOpen, closeModal, openModal }) => {
                   </div>
                   {/* city */}
                   <div>
-                    <label htmlFor="city" className="block font-medium text-gray-700">
+                    <label htmlFor="city" className="block font-medium text-gray-700 mb-2">
                       City
                     </label>
                     <select
@@ -120,7 +120,7 @@ const FilterPopup = ({ isOpen, closeModal, openModal }) => {
                 </div>
                 <div className='flex gap-6'>
                   <div>
-                    <label htmlFor="totalGamesPlayed" className="block font-medium text-gray-700">
+                    <label htmlFor="totalGamesPlayed" className="block font-medium text-gray-700 mb-2">
                       Total Games Played
                     </label>
                     <select
@@ -133,7 +133,7 @@ const FilterPopup = ({ isOpen, closeModal, openModal }) => {
                     </select>
                   </div>
                   <div>
-                    <label className="block font-medium text-gray-700">Rating</label>
+                    <label className="block font-medium text-gray-700 mb-2">Rating</label>
                     <div className="flex space-x-2">
                       {['2000', '3000', '4000'].map((rating) => (
                         <div key={rating} className="flex items-center">
@@ -157,7 +157,7 @@ const FilterPopup = ({ isOpen, closeModal, openModal }) => {
                     </div>
                   </div>
                   <div>
-                    <label className="block font-medium text-gray-700">Sort By</label>
+                    <label className="block font-medium text-gray-700 mb-2">Sort By</label>
                     <div className="flex space-x-2">
                       {['Win', 'Loses', 'Draws'].map((sort) => (
                         <div key={sort} className="flex items-center">
@@ -209,4 +209,4 @@ const FilterPopup = ({ isOpen, closeModal, openModal }) => {
   );
 };
 
-export default FilterPopup;
+export default DashboardFilter;

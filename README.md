@@ -1,2 +1,2 @@
-#Description:
-#React user input details form with react-hook-form with validation and if you submit the data then so can see you data inside localstrorage
+# App Name: MindLeague - Application for chess player
+# Description: This application is for chess player and this repository for the dashboard of the application

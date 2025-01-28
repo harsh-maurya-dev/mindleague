@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FaHome,
   FaUserGraduate,
@@ -16,11 +16,12 @@ import {
   FaFileAlt,
   FaSignOutAlt,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
-  const [selected, setSelected] = useState(0);
-  
+  const location = useLocation(); // React Router hook to get the current location
+  const [selected, setSelected] = useState(location.pathname); // Default to the current pathname
+
   const sideValues = [
     { name: "Dashboard", icon: <FaHome />, path: "/dashboard" },
     { name: "Student/Players", icon: <FaUserGraduate />, path: "/students-players" },
@@ -39,34 +40,30 @@ const Sidebar = () => {
     { name: "Content Management", icon: <FaFileAlt />, path: "/content-management" },
     { name: "Logout", icon: <FaSignOutAlt />, path: "/logout" },
   ];
-  
-  // console.log(selected);
-  
 
-  const handleClick = (index) => {
-    setSelected(index);
+  const handleClick = (path) => {
+    setSelected(path); // Update selected when a menu item is clicked
   };
 
+  useEffect(() => {
+    // Update selected state whenever the location changes
+    setSelected(location.pathname);
+  }, [location.pathname]);
+
+
   return (
-    <div className="text-[#241f20] bg-white w-64 h-full relative top-10 py-6 hidden md:block overflow-y-scroll no-scrollbar">
+    <div className="text-[#241f20] bg-white w-64 h-full relative top-10 pt-6 pb-10 hidden md:block overflow-y-scroll no-scrollbar shadow-md">
       <nav>
         <ul>
-          {sideValues.map((value, index) => (
-            <li
-              key={index}
-              // className={`flex items-center font-bold text-sm py-3 cursor-pointer hover:rounded-r-full mr-4 mb-2 hover:bg-[#007acc] hover:text-white ${
-              //   selected === index ? "bg-[#007acc] text-white rounded-r-full" : ""
-              // }`}
-              onClick={() => handleClick(index)}
-            >
-              <Link 
-                className={`flex items-center font-bold text-sm py-3 gap-2 px-4 cursor-pointer hover:rounded-r-full mr-4 mb-2 hover:bg-[#007acc] hover:text-white  ${
-                selected === index ? "bg-[#007acc] text-white rounded-r-full" : ""
-              }`}
-              // className="flex justify-center items-center gap-2 px-4"
-               to={value.path}>
-                <span>{value.icon}</span>
-                <span>{value.name}</span>
+          {sideValues.map((value) => (
+            <li key={value.path}>
+              <Link to={value.path} onClick={() => handleClick(value.path)}>
+                <div
+                  className={`flex items-center font-bold text-sm py-3 gap-2 px-4 cursor-pointer hover:rounded-r-full mr-4 mb-2 hover:bg-[#007acc] w-full hover:text-white ${selected === value.path ? "bg-[#007acc] px-4 py-3 w-full text-white rounded-r-full" : ""}`}
+                >
+                  <span>{value.icon}</span>
+                  <span>{value.name}</span>
+                </div>
               </Link>
             </li>
           ))}

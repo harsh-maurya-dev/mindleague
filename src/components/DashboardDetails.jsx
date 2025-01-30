@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 
 const DashboardDetails = () => {
-    const [tableData, setTableData] = useState([])
+    const [fields, setFileds] = useState([])
     const fetchData = async () => {
         try {
             const token = localStorage.getItem("x-auth-token-user")
@@ -15,12 +16,12 @@ const DashboardDetails = () => {
             }
             const response = await axios.patch("https://mindleague.com:2053/analytics/admin/getRecentStudents", {}, config)
             // console.log(response.data.results.students);
-            setTableData(response.data.results.students)
+            setFileds(response.data.results.students)
         } catch (error) {
             console.log("api error", error);
         }
     }
-    console.log(tableData);
+    console.log(fields);
 
     useEffect(() => {
         fetchData()
@@ -38,16 +39,19 @@ const DashboardDetails = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 border rounded-lg">
-                {fields.map((field, index) => (
+                {fields.map((field, index) => {
+                    const key = Object.keys(field)[0]; // Get the first key
+                    const value = field[key]; // Get the value associated with the key
+                    return (
                     <div key={index} className="space-y-2">
                         <label className="block text-gray-700 font-medium">
-                            Name
+                            {Object.keys(key)}
                         </label>
                         <div className="p-3 bg-gray-100 rounded-md">
-                            {field.value}
+                            {value}
                         </div>
                     </div>
-                ))}
+                )})}
             </div>
         </div>
     )

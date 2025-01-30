@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* add the code bellow */ 
-/* @layer utilities {
+@layer utilities {
     .no-scrollbar::-webkit-scrollbar {
         display: none;
     }
@@ -11,11 +11,11 @@
         -ms-overflow-style: none; 
         scrollbar-width: none;  
   }
-} */
+}
 
 /* html {
-  scrollbar-width: normal;
-  scrollbar-color: #777 #555;
+  scrollbar-width: 10px;
+  scrollbar-color: transparent;
 }
 
 html::-webkit-scrollbar {
@@ -23,20 +23,47 @@ html::-webkit-scrollbar {
 }
 
 html::-webkit-scrollbar-thumb {
-  background-color: #7775;
+  background-color: #007acc;
 }
 
 html::-webkit-scrollbar-thumb:hover {
-  background-color: #777;
+  background-color: #007acc;
 }
 
 html::-webkit-scrollbar-track {
-  background-color: #5555;
+  background-color: #fff;
 }
 
 html::-webkit-scrollbar-track:hover {
-  background-color: #555;
+  background-color: #fff;
 } */
+
+/* For WebKit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the track */
+  border-radius: 10px; /* Rounded corners for the track */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0077cc; /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Rounded corners for the thumb */
+  border: 3px solid #f1f1f1; /* Padding around the thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0077cc; /* Color of the thumb on hover */
+}
+
+/* For Firefox */
+html {
+  scrollbar-width: thin; /* "auto" or "thin" */
+  scrollbar-color: #0077cc #f1f1f1; /* thumb and track color */
+}
 
 /* globals.css */
 /* ::-webkit-scrollbar {
@@ -93,5 +120,26 @@ svg.loader {
    stroke-dashoffset: -125px;
   }
  }
+
+ /* Shimmer Effect & Skelton loading */
+ .skeleton {
+  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  height: 20px;
+  border-radius: 4px;
+  margin: 0 20px;
+  padding: 0;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
  
   

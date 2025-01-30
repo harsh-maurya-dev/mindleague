@@ -18,9 +18,9 @@ import {
 } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 
-const Sidebar = () => {
-  const location = useLocation(); // React Router hook to get the current location
-  const [selected, setSelected] = useState(location.pathname); // Default to the current pathname
+const Sidebar = ({ isOpenNav }) => {
+  const location = useLocation();
+  const [selected, setSelected] = useState(location.pathname);
 
   const sideValues = [
     { name: "Dashboard", icon: <FaHome />, path: "/dashboard" },
@@ -42,17 +42,19 @@ const Sidebar = () => {
   ];
 
   const handleClick = (path) => {
-    setSelected(path); // Update selected when a menu item is clicked
+    setSelected(path);
   };
 
   useEffect(() => {
-    // Update selected state whenever the location changes
     setSelected(location.pathname);
   }, [location.pathname]);
 
 
   return (
-    <div className="text-[#241f20] bg-white w-64 h-full relative top-10 pt-6 pb-10 hidden md:block overflow-y-scroll no-scrollbar shadow-md">
+
+    <div
+      className={`fixed md:static inset-y-0 left-0 w-72 bg-white z-10 overflow-y-auto no-scrollbar pt-16 pb-10 pr-4 shadow-md md:shadow-none transform transition-transform duration-300 ease-in-out ${isOpenNav ? "translate-x-0 top-0" : "-translate-x-full md:translate-x-0 top-10"
+        }`}>
       <nav>
         <ul>
           {sideValues.map((value) => (

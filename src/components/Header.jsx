@@ -4,9 +4,9 @@ import user from "../assets/user.png"
 import { FaBars } from "react-icons/fa6";
 
 
-const Header = () => {
+const Header = ({handleNavToggle}) => {
   return (
-    <header className="bg-[#241f20] text-white py-2 px-6 flex flex-wrap gap-2 justify-between items-center fixed top-0 w-full z-10">
+    <header className="bg-[#241f20] text-white py-2 px-6 flex flex-wrap gap-2 justify-between items-center fixed top-0 w-full z-50">
       <div className="text-3xl font-bold">Mindleague</div>
       <div className="mr-4 text-[#95bfe4] text-3xl font-extrabold">Admin Panel</div>
       <div className="flex items-center gap-2">
@@ -15,7 +15,7 @@ const Header = () => {
           <span>Hebrew</span>
         </div>
         <img src={user}/>
-        <FaBars className='block sm:hidden'/>
+        <FaBars className='block sm:hidden' onClick={handleNavToggle}/>
       </div>
     </header>
   );

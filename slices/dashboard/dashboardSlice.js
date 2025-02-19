@@ -12,7 +12,7 @@ export const getDashboardData = createAsyncThunk('dashboard/fetchData', async ()
         },
     }
     const response = await axios.patch(
-        'https://mindleague.com:2053/analytics/admin/getRecentStudents',
+        `${import.meta.env.VITE_API_ENDPOINT}/analytics/admin/getRecentStudents`,
         {}, config
 
     );

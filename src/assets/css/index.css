@@ -13,6 +13,21 @@
   }
 }
 
+/* Custom styles for ReactQuill with Tailwind */
+.quill-wrapper .ql-toolbar {
+  @apply border-0 border-b border-gray-300;
+}
+
+.quill-wrapper .ql-container {
+  @apply border-0 min-h-[200px];
+}
+
+/* Override ReactQuill's default styling */
+.custom-quill {
+  @apply font-sans;
+  height: fit-content;
+}
+
 /* html {
   scrollbar-width: 10px;
   scrollbar-color: transparent;

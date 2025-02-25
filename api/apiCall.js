@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: `${import.meta.env.VITE_APIENDPOINT}`
+    baseURL: `${import.meta.env.VITE_API_ENDPOINT}`
 });
 
 const token = localStorage.getItem("x-auth-token-user");
@@ -31,7 +31,7 @@ export const apiCall = async (method, url, data = {}) => {
         });
         return response.data; // Return only the data part of the response
     } catch (error) {
-        console.error("API call failed:", error);
+        console.error("API call failed:", error.message);
         throw error; // Re-throw the error for handling in the component
     }
 };

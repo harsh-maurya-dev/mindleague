@@ -8,4 +8,10 @@ export default {
     extend: {},
   },
   plugins: [],
+  safelist: [
+    // Add ReactQuill classes that might be purged
+    'ql-editor',
+    'ql-toolbar',
+    'ql-container'
+  ],
 }

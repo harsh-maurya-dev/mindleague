@@ -5,12 +5,15 @@ import { Link } from 'react-router-dom';
 import { FaEye, FaTrash } from 'react-icons/fa';
 import { apiCall } from '../../api/apiCall';
 import SkeletonTable from '../../shimmer/SkeletonTable';
+import { useTranslation } from 'react-i18next';
 
 const Alumni = () => {
     const [playerData, setPlayerData] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(true);
+      const { t } = useTranslation();
+    
 
     const closeModal = () => setIsOpen(false);
     const openModal = () => setIsOpen(true);
@@ -51,7 +54,7 @@ const Alumni = () => {
                         loading ? <SkeletonTable /> : (
                             <div className="mt-8 border-[1px] border-gray-200 p-4 bg-white rounded-md h-screen overflow-x-scroll">
                                 <div className="flex justify-between items-center py-4 w-full">
-                                    <h2 className="text-lg font-bold mb-4">Recent Students / Players</h2>
+                                    <h2 className="text-lg font-bold mb-4">{t("Recent Student / Players")}</h2>
                                     <div className="flex justify-between gap-4">
                                         <div className="bg-[#f1f1f1] flex justify-center items-center px-2 rounded-md">
                                             <input
@@ -74,19 +77,19 @@ const Alumni = () => {
                                     <table className=" overflow-y-scroll">
                                         <thead>
                                             <tr className="text-sm text-left">
-                                                <th className="p-3 font-semibold">S.NO.</th>
-                                                <th className="p-3 font-semibold">NAME</th>
-                                                <th className="p-3 font-semibold">START DATE</th>
-                                                <th className="p-3 font-semibold">AGE</th>
-                                                <th className="p-3 font-semibold">RATING</th>
-                                                <th className="p-3  font-semibold">NAME OF SCHOOL</th>
-                                                <th className="p-3 font-semibold">EMAIL</th>
-                                                <th className="p-3 font-semibold">SUBSCRIPTION</th>
-                                                <th className="p-3 font-semibold">CITY</th>
-                                                <th className="p-3 font-semibold">PAYPAL ID</th>
-                                                <th className="p-3 font-semibold">EMPLOYER</th>
-                                                <th className="p-3 font-semibold">STATUS</th>
-                                                <th className="p-3 font-semibold">ACTION</th>
+                                                <th className="p-3 font-semibold">{t("S.NO.")}</th>
+                                                <th className="p-3 font-semibold">{t("NAME")}</th>
+                                                <th className="p-3 font-semibold">{t("START DATE")}</th>
+                                                <th className="p-3 font-semibold">{t("AGE")}</th>
+                                                <th className="p-3 font-semibold">{t("RATING")}</th>
+                                                <th className="p-3  font-semibold">{t("NAME OF SCHOOL")}</th>
+                                                <th className="p-3 font-semibold">{t("EMAIL")}</th>
+                                                <th className="p-3 font-semibold">{t("SUBSCRIPTION")}</th>
+                                                <th className="p-3 font-semibold">{t("CITY")}</th>
+                                                <th className="p-3 font-semibold">{t("PAYPAL ID")}</th>
+                                                <th className="p-3 font-semibold">{t("EMPLOYER")}</th>
+                                                <th className="p-3 font-semibold">{t("STATUS")}</th>
+                                                <th className="p-3 font-semibold">{t("ACTION")}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
